@@ -1,0 +1,26 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+}
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+const { 
+    title = "Promoción XXV | Ingeniería de sistemas UNT", 
+    description = "Promoción XXV de la Escuela de Ingeniería de Sistemas de la Universidad Nacional de Trujillo"
+} = Astro.props;
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <SpeedInsights />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

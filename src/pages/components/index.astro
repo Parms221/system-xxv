@@ -1,37 +1,28 @@
 ---
 import Button from "@/components/ui/Button.astro";
 import * as Icon from "@astropub/icons";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Componentes</title>
-	</head>
-	<body>
-        <main class="container mx-auto py-5 ">
-            <h1 class="text-primary text-2xl font-bold">Componentes</h1>
-			<section class="mt-5">
-				<h2 class="text-xl font-bold mb-2">Botones</h2>
-				<div class="flex flex-wrap gap-3">
-					<Button variant="default">
-						DEFAULT BUTTON
-					</Button>
-					<Button variant="secondary">
-						SECONDARY BUTTON
-					</Button>
+<BaseLayout title="Components">
+	<main class="container mx-auto py-5 ">
+		<h1 class="text-primary text-2xl font-bold">Componentes</h1>
+		<section class="mt-5">
+			<h2 class="text-xl font-bold mb-2">Botones</h2>
+			<div class="flex flex-wrap gap-3">
+				<Button variant="default">
+					DEFAULT BUTTON
+				</Button>
+				<Button variant="secondary">
+					SECONDARY BUTTON
+				</Button>
 
-					<Button variant="default">
-						<Icon.ArrowRight slot="icon" size="20"/>
-						BUTTON
-					</Button>
-				</div>
-			</section>
+				<Button variant="default">
+					<Icon.ArrowRight slot="icon" size="20"/>
+					BUTTON
+				</Button>
+			</div>
+		</section>
 
-        </main>
-
-	</body>
-</html>
+	</main>
+</BaseLayout>
