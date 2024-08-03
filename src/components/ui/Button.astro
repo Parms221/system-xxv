@@ -1,0 +1,93 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+    variant?: "default" | "secondary";
+}
+const { variant = "default", ...props } = Astro.props;
+---
+
+<div class="button-container">
+    <div class={`button-bg btn-bg-${variant}`}></div>
+    <button class:list={["button", `btn-${variant}`, Astro.props.class]} {...props}>
+        <slot name="icon" class="w-5 h-5" />
+        <slot />
+    </button>
+</div>
+
+<style>
+    .button-container {
+        display: inline-block;
+        position: relative;
+    }
+
+    .button{
+        padding: 0.5rem 1rem;
+        transition: transform 0.2s;
+        font-size: 1.05rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-default {
+        @apply bg-black text-primary-foreground;
+    }
+
+    .btn-secondary {
+        @apply bg-white text-black border-2 border-black
+    }
+    
+    .button-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .btn-bg-default {
+        background: rgb(10,59,165);
+        background-size: 400% 400%;
+        background: linear-gradient(90deg, rgba(10,59,165,1) 20%, rgba(252,163,17,1) 100%);
+    }
+
+    .btn-bg-secondary {
+        background-color: black;
+    }
+
+    .button-container:hover .button {
+        transform: translateY(-3px) translateX(-3px)
+    }
+
+    .button-container:hover .button-bg {
+        -webkit-animation: ButtonGradient 1s infinite;
+        -moz-animation: ButtonGradient 1s infinite;
+        -o-animation: ButtonGradient 1s infinite;
+        animation: ButtonGradient 1s infinite;
+    }
+
+    @-webkit-keyframes ButtonGradient {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes ButtonGradient {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-o-keyframes ButtonGradient {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes ButtonGradient {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+
+</style>
